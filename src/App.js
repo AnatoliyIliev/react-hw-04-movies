@@ -1,37 +1,36 @@
-// import { useState, useEffect, useRef } from 'react';
-import './App.module.scss';
+import { Switch, Route } from 'react-router-dom';
+// import './App.module.scss';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
-// import API from './services/API';
+import TrendingMovieDayView from './views/TrendingMovieDayView';
 
-function App() {
-  //  const [searchQuery, setSearchQuery] = useState('');
 
-  // const onLoading = useRef(loading);
+export default function App() {
+  return (
+    <Container>
+      <AppBar />
 
-  // useEffect(() => {
-  //   if (!searchQuery) {
-  //     return;
-  //   }
-  //   fetchUpdate();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [searchQuery]);
+      <Switch>
+        <Route path="/" exact>
+          <HomeView />
+        </Route>
 
-  // const fetchUpdate = () => {
-  //   setLoading(!onLoading.current);
+        <Route path="/authors">
+          <AuthorsView />
+        </Route>
 
-  //   API.fetchImages(searchQuery, page)
-  //     .then(PixabayImageHins => {
-  //       setPixabayImage([...PixabayImage, ...PixabayImageHins.hits]);
-  //       setPage(prevPage => prevPage + 1);
-  //     })
-  //     .catch(() => setError(`Поиск ${searchQuery} не дал результата`))
-  //     .finally(() => {
-  //       setLoading(onLoading.current);
-  //     });
-  // };
+        <Route path="/books" exact>
+          <BooksView />
+        </Route>
 
-  return <div></div>;
+        <Route path="/books/:bookId">
+          <BookDetailsView />
+        </Route>
+
+        <Route>
+          <NotFoundView />
+        </Route>
+      </Switch>
+    </Container>
+  );
 }
-
-export default App;
