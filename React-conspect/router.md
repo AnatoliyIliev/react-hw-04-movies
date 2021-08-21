@@ -11,3 +11,4 @@ import { Switch, Route } from 'react-router-dom';
    - let match = useRouteMatch("/blog/:slug"); или
    - const match = useRouteMatch({ path: "/BLOG/:slug/", strict: true,
      sensitive: true });
+6. <BrowserRouter> - в это завернуть <App /> в index.js
