@@ -21,7 +21,9 @@ export function fetchSearchMovie() {
 }
 
 export function fetchMovieById(movie_id) {
-  return fetchWithErrorHandling(`${BASE_URL}/movie/${movie_id}?_expand=author`);
+  return fetchWithErrorHandling(
+    `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&_expand=author`,
+  );
 }
 
 export function fetchMovieCredits(movie_id) {

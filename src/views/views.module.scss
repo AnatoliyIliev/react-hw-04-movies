@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    margin-left: 20px;
+}
+.link{
+    display: block;
+    margin-left: 20px;
+}
+
+.genres{
+    list-style-type: none;
+    display: flex;
+}
+
+.genres li {
+    display: flex;
+    margin-left: 20px;
+}
+
+.back{
+    display: block;
+    margin-left: 20px;
+
+}
