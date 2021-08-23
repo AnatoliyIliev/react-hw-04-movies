@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import * as movieShelfAPI from '../services/movies-API';
 import PageHeading from '../components/PageHeading';
+import styles from './views.module.scss';
 // import MovieDetailsPage from './MoviesPage';
 
 export default function HomePage() {
@@ -14,7 +15,7 @@ export default function HomePage() {
   }, []);
 
   // console.log(movies);
-  console.log(url);
+  // console.log(url);
   // console.log(movieId);
 
   return (
@@ -22,12 +23,16 @@ export default function HomePage() {
       <PageHeading text="Trending today" />
 
       {movies && (
-        <ul>
+        <ul className={styles.images}>
           {movies.results.map(movie => (
             <li key={movie.id}>
               <Link to={`${url}movies/${movie.id}`}>
-                {/* <img style={{width:200}} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie.original_title"/> */}
-                {movie.original_title}
+                <img
+                  className={styles.imag}
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt="movie.original_title"
+                />
+                <p className={styles.text}>{movie.original_title}</p>
               </Link>
             </li>
           ))}

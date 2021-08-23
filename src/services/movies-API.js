@@ -16,13 +16,15 @@ export function fetchTopMovies() {
   );
 }
 
-export function fetchSearchMovie() {
-  return fetchWithErrorHandling(`${BASE_URL}/search/movie?api_key=${API_KEY}`);
+export function fetchSearchMovie(searchQuery) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`,
+  );
 }
 
 export function fetchMovieById(movie_id) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&_expand=author`,
+    `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}`,
   );
 }
 

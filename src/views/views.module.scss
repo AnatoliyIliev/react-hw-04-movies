@@ -31,6 +31,59 @@
     margin-left: 20px;
     margin-bottom: 10px;
 }
+
 .info{
     margin-left: 20px;
 }
+
+.Searchbar{
+    margin-left: 20px;
+}
+
+.SearchForm {
+    margin-left: 20px;
+}
+
+.SearchForm_button {
+    margin-left: 5px;
+}
+
+.SearchForm_input {
+    margin-left: 10px;
+}
+
+//HomePage
+
+.images {
+    display: grid;
+    max-width: calc(100vw - 78px);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.images li {
+    display: flex;
+    justify-content: center;
+}
+
+.imag {
+    // display: flex;
+    width: 200px;
+    // margin: 5px;
+}
+
+.text{
+    text-align: center;
+    font-weight: 100;
+    font-size: 15px;
+   
+  
+    
+}
+

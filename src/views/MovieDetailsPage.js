@@ -47,14 +47,14 @@ export default function MovieDetailsPage({ movies }) {
           <hr />
           <div>
             <p className={styles.info}>Additional information</p>
-            {/* <ul>
+            <ul>
               <NavLink className={styles.link} to={`${url}/cast`}>
                 Cast
               </NavLink>
               <NavLink className={styles.link} to={`${url}/reviews`}>
                 Reviews
               </NavLink>
-            </ul> */}
+            </ul>
           </div>
           <Route path={`${path}movies/:movieId`}>
             {movies && <Cast movies={movies} />}
