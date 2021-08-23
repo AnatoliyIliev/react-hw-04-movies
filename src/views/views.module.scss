@@ -2,6 +2,13 @@
     display: flex;
     margin-left: 20px;
 }
+
+.items{
+    display: block;
+    margin-left: 20px;
+
+}
+
 .link{
     display: block;
     margin-left: 20px;
@@ -10,15 +17,20 @@
 .genres{
     list-style-type: none;
     display: flex;
+    padding: 0;
 }
 
 .genres li {
     display: flex;
-    margin-left: 20px;
+    margin: 5px;
+    
 }
 
 .back{
     display: block;
     margin-left: 20px;
-
+    margin-bottom: 10px;
+}
+.info{
+    margin-left: 20px;
 }
