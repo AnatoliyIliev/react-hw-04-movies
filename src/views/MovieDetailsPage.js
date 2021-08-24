@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useParams, NavLink, useRouteMatch, Route } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import { useParams, Link, useRouteMatch, Route } from 'react-router-dom';
 import * as movieShelfAPI from '../services/movies-API';
 import styles from './views.module.scss';
 import Cast from './Cast';
+import Reviews from './Reviews';
 
 export default function MovieDetailsPage({ movies }) {
   const { movieId } = useParams();
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -15,14 +16,14 @@ export default function MovieDetailsPage({ movies }) {
 
   // console.log(url);
 
-  console.log(movie);
+  // console.log(movie);
   // console.log(movieId);
 
   return (
     <>
-      <NavLink className={styles.back} to={`${url}`}>
+      {/* <Link className={styles.back} to={`${url}`}>
         Go back
-      </NavLink>
+      </Link> */}
       {movie && (
         <>
           <div className={styles.container}>
@@ -48,17 +49,28 @@ export default function MovieDetailsPage({ movies }) {
           <div>
             <p className={styles.info}>Additional information</p>
             <ul>
-              <NavLink className={styles.link} to={`${url}/cast`}>
-                Cast
-              </NavLink>
-              <NavLink className={styles.link} to={`${url}/reviews`}>
-                Reviews
-              </NavLink>
+              <li>
+                <Link className={styles.link} to={`${url}/cast`}>
+                  Cast
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.link} to={`${url}/reviews`}>
+                  Reviews
+                </Link>
+              </li>
             </ul>
           </div>
-          <Route path={`${path}movies/:movieId`}>
-            {movies && <Cast movies={movies} />}
-          </Route>
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path="/movies/:movieId/cast">
+              <Cast />
+            </Route>
+
+            <Route path="/movies/:movieId/reviews">
+              <Reviews />
+            </Route>
+          </Suspense>
         </>
       )}
     </>

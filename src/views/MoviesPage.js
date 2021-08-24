@@ -1,61 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation, Link, useRouteMatch } from 'react-router-dom';
 import * as movieShelfAPI from '../services/movies-API';
 import { ToastContainer } from 'react-toastify';
 import styles from './views.module.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import queryString from 'query-string';
 
 export default function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
-  const { url, path } = useRouteMatch();
-  // const [search, setSearch] = useState('');
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const { url } = useRouteMatch();
+  const value = queryString.parse(location.search)?.query || '';
   const [searchResalt, setSearchResalt] = useState(null);
-
-  console.log(location);
-  console.log(history);
-
-  // const handleSearchQueryChange = event => {
-  //   // event.preventDefault();
-  //   console.log(event.target.value);
-  //   setSearch(event.currentTarget.value.toLowerCase());
-  // };
-  // console.log(search);
-  // console.log(searchResalt);
-  // console.log(useRouteMatch());
-  // console.log(searchQuery);
+  // const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    if (!searchQuery) {
+    if (!value) {
       return;
     }
     movieShelfAPI
-      .fetchSearchMovie(searchQuery)
+      .fetchSearchMovie(value)
       .then(setSearchResalt)
-      .catch(() => setError(`Поиск ${searchQuery} не дал результата`));
-  }, [searchQuery]);
+      .catch(() => console.log(`Поиск ${value} не дал результата`));
+  }, [value]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    console.log(event.target.elements[0].value);
-    let search = event.target.elements[0].value;
-
-    // console.log(event.currentTarget);
-    // console.log(url);
+    let search = event.target.movie.value;
 
     if (search.trim() === '') {
       toast.error('Введите что-то для поиска.');
       return;
     }
-    // onSubmit(searchQuery);
-    setSearchQuery(search);
-    // setSearch('');
-    search = '';
+    history.push({
+      ...location,
+      search: `query=${search}`,
+    });
+
+    document.getElementById('movieInput').value = '';
   };
 
   return (
@@ -65,8 +49,8 @@ export default function MoviesPage() {
           <input
             className={styles.SearchForm_input}
             type="text"
+            id="movieInput"
             // value={search}
-            // onChange={handleSearchQueryChange}
             name="movie"
             autoComplete="off"
             autoFocus
@@ -86,8 +70,12 @@ export default function MoviesPage() {
               <Link to={`${url}/${movie.id}`}>
                 <img
                   className={styles.imag}
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt="movie.original_title"
+                  src={
+                    movie.poster_path !== null
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : 'https://img.icons8.com/ios-filled/50/000000/user-not-found.png'
+                  }
+                  alt={movie.original_title}
                 />
                 <p className={styles.text}>{movie.original_title}</p>
               </Link>
