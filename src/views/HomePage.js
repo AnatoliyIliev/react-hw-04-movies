@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 import * as movieShelfAPI from '../services/movies-API';
 import PageHeading from '../components/PageHeading';
 import styles from './views.module.scss';
 // import MovieDetailsPage from './MoviesPage';
 
 export default function HomePage() {
+  const location = useLocation();
   const { url } = useRouteMatch();
   const [movies, setMovies] = useState(null);
   // const { movieId } = useParams();
@@ -13,10 +14,6 @@ export default function HomePage() {
   useEffect(() => {
     movieShelfAPI.fetchTopMovies().then(setMovies);
   }, []);
-
-  console.log(movies);
-  // console.log(url);
-  // console.log(movieId);
 
   return (
     <>
@@ -26,7 +23,12 @@ export default function HomePage() {
         <ul className={styles.images}>
           {movies.results.map(movie => (
             <li key={movie.id}>
-              <Link to={`${url}movies/${movie.id}`}>
+              <Link
+                to={{
+                  pathname: `${url}movies/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
                 <img
                   width="250px"
                   height="375px"

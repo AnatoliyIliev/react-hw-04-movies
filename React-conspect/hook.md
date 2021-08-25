@@ -17,4 +17,15 @@
 7. useCallback - вернёт мемоизированную версию колбэка, который изменяется
    только, если изменяются значения одной из зависимостей. useCallback(fn, deps)
    — это эквивалент useMemo(() => fn, deps).
-8.
+8. useHistory() - достук к адресной строке(истории)
+9. useLocation() - текущее место положение
+10. new URLSearchParams(location.search).get("query") - получить значение с
+    адресной строке
+    - history.push({
+      - ...location,
+      - search: `query=${search}`,
+    - });
+    - const HomePage = lazy(() => import('./views/HomePage' /_webpackChunkName:
+      "HomePage"_/));
+11. React.lazy() - ленивая загрузка, чтобы грузить текущую страницу и все.
+12. Suspense -<Suspense fallback={<div>Loading.....</div>}></Suspense>

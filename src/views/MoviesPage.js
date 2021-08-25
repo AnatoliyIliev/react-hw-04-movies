@@ -12,7 +12,7 @@ export default function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
   const { url } = useRouteMatch();
-  const value = queryString.parse(location.search)?.query || '';
+  const value = queryString.parse(location.search)?.query ?? '';
   const [searchResalt, setSearchResalt] = useState(null);
   // const [searchQuery, setSearchQuery] = useState("");
 
@@ -43,7 +43,6 @@ export default function MoviesPage() {
     document.getElementById('movieInput').value = '';
   };
 
-  console.log(searchResalt);
   return (
     <>
       <header className={styles.Searchbar}>
@@ -69,7 +68,12 @@ export default function MoviesPage() {
         <ul className={styles.images}>
           {searchResalt.results.map(movie => (
             <li key={movie.id}>
-              <Link to={`${url}/${movie.id}`}>
+              <Link
+                to={{
+                  pathname: `${url}/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
                 <img
                   width="250px"
                   height="375px"

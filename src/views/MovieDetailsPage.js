@@ -1,31 +1,46 @@
-import { useState, useEffect, Suspense } from 'react';
-import { useParams, Link, useRouteMatch, Route } from 'react-router-dom';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import {
+  useParams,
+  Link,
+  useRouteMatch,
+  Route,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import * as movieShelfAPI from '../services/movies-API';
 import styles from './views.module.scss';
-import Cast from './Cast';
-import Reviews from './Reviews';
+// import Cast from './Cast';
+// import Reviews from './Reviews';
 
-export default function MovieDetailsPage({ movies }) {
+const Cast = lazy(() => import('./Cast' /*webpackChunkName: "HomePage"*/));
+const Reviews = lazy(() =>
+  import('./Reviews' /*webpackChunkName: "HomePage"*/),
+);
+
+export default function MovieDetailsPage() {
+  const history = useHistory();
+  const location = useLocation();
   const { movieId } = useParams();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     movieShelfAPI.fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
-  // console.log(url);
-
-  // console.log(movie);
-  // console.log(movieId);
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/');
+    console.log(location);
+    console.log(history);
+  };
 
   return (
     <>
-      {/* <Link className={styles.back} to={`${url}`}>
-        Go back
-      </Link> */}
       {movie && (
         <>
+          <button className={styles.back} type="batton" onClick={onGoBack}>
+            Go back
+          </button>
           <div className={styles.container}>
             <img
               style={{ width: 200 }}
@@ -50,12 +65,26 @@ export default function MovieDetailsPage({ movies }) {
             <p className={styles.info}>Additional information</p>
             <ul>
               <li>
-                <Link className={styles.link} to={`${url}/cast`}>
+                <Link
+                  className={styles.link}
+                  to={{
+                    pathname: `${url}/cast`,
+                    state: { from: location },
+                  }}
+                  // to={`${url}/cast`}
+                >
                   Cast
                 </Link>
               </li>
               <li>
-                <Link className={styles.link} to={`${url}/reviews`}>
+                <Link
+                  className={styles.link}
+                  to={{
+                    pathname: `${url}/reviews`,
+                    state: { from: location },
+                  }}
+                  // to={`${url}/reviews`}
+                >
                   Reviews
                 </Link>
               </li>
@@ -63,11 +92,13 @@ export default function MovieDetailsPage({ movies }) {
           </div>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <Route path="/movies/:movieId/cast">
+            {/* <Route path="/movies/:movieId/cast"> */}
+            <Route path={`${path}/cast`} exact>
               <Cast />
             </Route>
 
-            <Route path="/movies/:movieId/reviews">
+            {/* <Route path="/movies/:movieId/reviews"> */}
+            <Route path={`${path}/reviews`}>
               <Reviews />
             </Route>
           </Suspense>
