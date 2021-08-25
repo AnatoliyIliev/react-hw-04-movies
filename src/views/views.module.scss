@@ -57,7 +57,7 @@
 .images {
     display: grid;
     max-width: calc(100vw - 78px);
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     grid-gap: 16px;
     margin-top: 0;
     margin-bottom: 0;
@@ -72,11 +72,9 @@
     justify-content: center;
 }
 
-.imag {
-    // display: flex;
-    width: 200px;
-    // margin: 5px;
-}
+// .imag {
+//     width: 200px;
+// }
 
 .text{
     text-align: center;
@@ -84,9 +82,9 @@
     font-size: 15px;    
 }
 
-.imag_actors{
-    width: 100px;
-}
+// .imag_actors{
+//     width: 100px;
+// }
 
 .actors_name{
     display: block;

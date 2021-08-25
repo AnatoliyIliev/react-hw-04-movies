@@ -6,6 +6,7 @@ import styles from './views.module.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import queryString from 'query-string';
+import notFound from '../userNotFound/no-photo-svgrepo-com.svg';
 
 export default function MoviesPage() {
   const history = useHistory();
@@ -42,6 +43,7 @@ export default function MoviesPage() {
     document.getElementById('movieInput').value = '';
   };
 
+  console.log(searchResalt);
   return (
     <>
       <header className={styles.Searchbar}>
@@ -69,15 +71,19 @@ export default function MoviesPage() {
             <li key={movie.id}>
               <Link to={`${url}/${movie.id}`}>
                 <img
+                  width="250px"
+                  height="375px"
                   className={styles.imag}
                   src={
                     movie.poster_path !== null
                       ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                      : 'https://img.icons8.com/ios-filled/50/000000/user-not-found.png'
+                      : // : 'https://img.icons8.com/ios-filled/50/000000/user-not-found.png'
+                        notFound
                   }
                   alt={movie.original_title}
                 />
                 <p className={styles.text}>{movie.original_title}</p>
+                <p className={styles.text}>{movie.release_date}</p>
               </Link>
             </li>
           ))}
