@@ -1,0 +1,39 @@
+{
+  "files": {
+    "HomePage.css": "/static/css/HomePage.498140b6.chunk.css",
+    "HomePage.js": "/static/js/HomePage.49af81f0.chunk.js",
+    "HomePage.js.map": "/static/js/HomePage.49af81f0.chunk.js.map",
+    "MovieDetailsPage.css": "/static/css/MovieDetailsPage.2bdbecff.chunk.css",
+    "MovieDetailsPage.js": "/static/js/MovieDetailsPage.eb253123.chunk.js",
+    "MovieDetailsPage.js.map": "/static/js/MovieDetailsPage.eb253123.chunk.js.map",
+    "MoviesPage.css": "/static/css/MoviesPage.2bdbecff.chunk.css",
+    "MoviesPage.js": "/static/js/MoviesPage.d91daeb8.chunk.js",
+    "MoviesPage.js.map": "/static/js/MoviesPage.d91daeb8.chunk.js.map",
+    "main.css": "/static/css/main.0b109a71.chunk.css",
+    "main.js": "/static/js/main.0aff24ab.chunk.js",
+    "main.js.map": "/static/js/main.0aff24ab.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a8c9625d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a8c9625d.js.map",
+    "static/js/5.67bb1676.chunk.js": "/static/js/5.67bb1676.chunk.js",
+    "static/js/5.67bb1676.chunk.js.map": "/static/js/5.67bb1676.chunk.js.map",
+    "static/css/6.68b64559.chunk.css": "/static/css/6.68b64559.chunk.css",
+    "static/js/6.3627faf4.chunk.js": "/static/js/6.3627faf4.chunk.js",
+    "static/js/6.3627faf4.chunk.js.map": "/static/js/6.3627faf4.chunk.js.map",
+    "static/js/7.22bbe6ce.chunk.js": "/static/js/7.22bbe6ce.chunk.js",
+    "static/js/7.22bbe6ce.chunk.js.map": "/static/js/7.22bbe6ce.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/6.68b64559.chunk.css.map": "/static/css/6.68b64559.chunk.css.map",
+    "static/css/HomePage.498140b6.chunk.css.map": "/static/css/HomePage.498140b6.chunk.css.map",
+    "static/css/MovieDetailsPage.2bdbecff.chunk.css.map": "/static/css/MovieDetailsPage.2bdbecff.chunk.css.map",
+    "static/css/MoviesPage.2bdbecff.chunk.css.map": "/static/css/MoviesPage.2bdbecff.chunk.css.map",
+    "static/css/main.0b109a71.chunk.css.map": "/static/css/main.0b109a71.chunk.css.map",
+    "static/js/5.67bb1676.chunk.js.LICENSE.txt": "/static/js/5.67bb1676.chunk.js.LICENSE.txt",
+    "static/media/no-photo-svgrepo-com.svg": "/static/media/no-photo-svgrepo-com.884c6ded.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a8c9625d.js",
+    "static/js/5.67bb1676.chunk.js",
+    "static/css/main.0b109a71.chunk.css",
+    "static/js/main.0aff24ab.chunk.js"
+  ]
+}
